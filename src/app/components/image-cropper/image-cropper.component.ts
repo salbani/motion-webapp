@@ -17,7 +17,7 @@ export class ImageCropperComponent implements OnInit, AfterViewInit, OnChanges {
 	@Input() Width: string = '100px';
 	@Input() Height: string = '100px';
 	@Input() Ratio: number = 16 / 9;
-	@Input() Source: string = 'img/bg/bg2.jpg';
+	@Input() Source: string = 'assets/img/bg/bg2.jpg';
 	@Input('Options') ICOptions: Cropper.Options;
 
 	ICCropper: Cropper;

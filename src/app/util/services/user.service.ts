@@ -122,7 +122,7 @@ export class UserService extends ApiService<IUser> {
         let avatar = user.avatar ? user.avatar : await this.__http.get(urlExt).toPromise().then(data => {
             return urlExt;
         }, err => {
-            return 'http://www.photographersadventureclub.com/wp-content/uploads/2013/02/blank-avatar.png';
+            return 'assets/img/blank-profile-picture-973460_640.png';
         });
         return avatar;
     }

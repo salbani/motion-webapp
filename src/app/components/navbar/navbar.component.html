@@ -1,7 +1,7 @@
 <nav class="navbar-top animation-slide-from-top" *ngIf='_languageService.language'>
     <div class="nav-wrapper white">
         <languagechanger [hide]="true"></languagechanger>
-        <a routerLink="/profile" class="brand-logo valign-wrapper"><img class="mtn-logo hide-on-med-and-down" src="img/logo/logo-color.png"></a>
+        <a routerLink="/profile" class="brand-logo valign-wrapper"><img class="mtn-logo hide-on-med-and-down" src="assets/img/logo/logo-color.png"></a>
         <a href="#" data-activates="nav-mobile" materialize="sideNav" [materializeParams]="sidenavParams" [materializeActions]="sidenavActions" class="button-collapse"><i class="material-icons grey-text">menu</i></a>
         <!--<a href="#" data-activates="nav-mobile" materialize="sideNav" class="button-collapse"><i class="material-icons grey-text">menu</i></a>-->
         <ul id="nav-desktop" class="right hide-on-med-and-down">
@@ -26,7 +26,7 @@
                 </div>
             </li>
             <li>
-                <a class="grey-text waves-effect waves-light" routerLink="/posts"><img class="material-icons left mtn-logo" src="img/logo/logo-color.png">Start</a>
+                <a class="grey-text waves-effect waves-light" routerLink="/posts"><img class="material-icons left mtn-logo" src="assets/img/logo/logo-color.png">Start</a>
             </li>
             <li routerLinkActive="active"><a class="grey-text waves-effect waves-light" routerLink="/createpost"><i class="material-icons left">create</i>{{_languageService.language.navbarComponent.writeSomething}}</a></li>
             <li routerLinkActive="active"><a class="grey-text waves-effect waves-light" routerLink="/posts"><i class="material-icons left">view_list</i>{{_languageService.language.navbarComponent.posts}}</a></li>

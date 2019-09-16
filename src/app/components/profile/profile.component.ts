@@ -62,7 +62,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
 	async	afterInit(paramUserId) {
 		this._navbarService.setCurrentPage('profile', this.user);
-		this.backGroundImg = this.user.landscape ? this.user.landscape : 'img/bg/bg4.jpg';
+		this.backGroundImg = this.user.landscape ? this.user.landscape : 'assets/img/bg/bg4.jpg';
 		let post = await this._postService.getUserPosts(paramUserId, this.load).catch(err => { this._router.navigate(['err']); return null; });
 		if (post.type === 1000)
 			this.posts = post.data;

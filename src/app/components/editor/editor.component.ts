@@ -8,7 +8,7 @@ import * as Quill from 'quill';
 })
 export class EditorComponent implements OnInit {
 
-    @ViewChild('container', { static: false }) QuillContainer: ElementRef;
+    @ViewChild('container', { static: true }) QuillContainer: ElementRef;
     constructor(private _languageService: LanguageService) { }
     @Output() contentOutput = new EventEmitter()
     @Input() content;

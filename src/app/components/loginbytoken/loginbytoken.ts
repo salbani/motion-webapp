@@ -7,7 +7,7 @@ import { UserService } from '../../util/services/user.service';
     template: ''
 })
 
-export class LoginByToken implements OnInit {
+export class LoginByTokenComponent implements OnInit {
 
     constructor(private userService: UserService, private _router: Router, private _aktivatedRoute: ActivatedRoute) { }
 

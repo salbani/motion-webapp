@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { ApiService } from './api.service';
 import { IResponseData } from '../interfaces/responseData';
-import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
 export class ReportService extends ApiService<Object> {
-    constructor(public __http: Http) {
+    constructor(public __http: HttpClient) {
         super(__http, 'report/');
     }
 
     report(item): Promise<IResponseData<null>> {
         let urlExt = 'report/';
-        return this.http.post(this.url + urlExt, item).map(res => res.json()).toPromise().then(data => { return data; });
+        return this.http.post(this.url + urlExt, item).toPromise().then((data: IResponseData<null>) => { return data; });
     }
 }

@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit, EventEmitter, ViewChild, ElementRef, Output, Input } from '@angular/core';
 import { LanguageService } from '../../util/services/language.service';
 import * as Quill from 'quill';
-import { Observable } from 'rxjs/Rx';
 
 @Component({
     selector: 'editor',
@@ -9,7 +8,7 @@ import { Observable } from 'rxjs/Rx';
 })
 export class EditorComponent implements OnInit {
 
-    @ViewChild('container') QuillContainer: ElementRef;
+    @ViewChild('container', { static: false }) QuillContainer: ElementRef;
     constructor(private _languageService: LanguageService) { }
     @Output() contentOutput = new EventEmitter()
     @Input() content;

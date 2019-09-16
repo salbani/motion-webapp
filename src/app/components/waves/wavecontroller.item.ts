@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
     styleUrls: ['./wavecontroller.item.css']
 })
 
-export class WaveControllerItem implements OnInit {
+export class WaveControllerItemComponent implements OnInit {
     @Input() wave;
     @Input() myWaves = [];
     checked = false;

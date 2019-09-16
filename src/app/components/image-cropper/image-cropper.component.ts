@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter, AfterViewInit, OnChanges, SimpleChanges } from '@angular/core';
-import * as Cropper from 'cropperjs';
+import Cropper from 'cropperjs';
 import { MediaService } from '../../util/services/media.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { MediaService } from '../../util/services/media.service';
 })
 export class ImageCropperComponent implements OnInit, AfterViewInit, OnChanges {
 
-	@ViewChild('CropperContainer') ICContainerRef: ElementRef;
-	@ViewChild('CropperImage') ICImageRef: ElementRef;
+	@ViewChild('CropperContainer', { static: true }) ICContainerRef: ElementRef;
+	@ViewChild('CropperImage', { static: true }) ICImageRef: ElementRef;
 
 	@Output() OnUploadFinished = new EventEmitter<{ success: boolean, link: string }>();
 
@@ -18,7 +18,7 @@ export class ImageCropperComponent implements OnInit, AfterViewInit, OnChanges {
 	@Input() Height: string = '100px';
 	@Input() Ratio: number = 16 / 9;
 	@Input() Source: string = 'img/bg/bg2.jpg';
-	@Input('Options') ICOptions: Cropper.CropperOptions;
+	@Input('Options') ICOptions: Cropper.Options;
 
 	ICCropper: Cropper;
 
@@ -49,7 +49,7 @@ export class ImageCropperComponent implements OnInit, AfterViewInit, OnChanges {
 		}
 	}
 
-	ICCrop(e: Cropper.CropperCustomEvent) {
+	ICCrop(e: any) {
 	}
 
 	async ICCroppedUpload() {

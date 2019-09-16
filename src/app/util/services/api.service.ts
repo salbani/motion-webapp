@@ -1,7 +1,5 @@
-import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IUser } from '../interfaces/user';
 import { IResponseData } from '../interfaces/responseData';
 import { config } from '../../constants/config';
@@ -10,11 +8,11 @@ import { config } from '../../constants/config';
 export class ApiService<T> {
 
     private baseUrl: string = config.API_URL + '/';
-    __http: Http;
+    __http: HttpClient;
     url: string;
     http: HttpHeader;
 
-    constructor(__http: Http, urlExt: string/*, private _router: Router*/) {
+    constructor(__http: HttpClient, urlExt: string) {
         this.__http = __http;
         this.url = this.baseUrl + urlExt;
         this.http = new HttpHeader(__http);
@@ -22,28 +20,28 @@ export class ApiService<T> {
 
     index(page): Promise<IResponseData<T[]>> {
         let urlExt = this.url + page;
-        return this.http.get(urlExt).map(res => res.json()).toPromise().then(data => { return data; });
+        return this.http.get(urlExt).toPromise().then((data: IResponseData<T[]>) => { return data; });
     }
 
     create(item: T): Promise<IResponseData<T>> {
         let urlExt = this.url + 'create';
-        return this.http.post(urlExt, item).map(res => res.json()).toPromise().then(data => {
+        return this.http.post(urlExt, item).toPromise().then((data: IResponseData<T>) => {
             return this.checkResponse(data);
         });
     }
 
     find(id: string): Promise<IResponseData<T>> {
         let urlExt = this.url + 'find/' + id;
-        return this.http.get(urlExt).map(res => res.json()).toPromise().then(data => { return data; });
+        return this.http.get(urlExt).toPromise().then((data: IResponseData<T>) => { return data; });
     }
 
     delete(id: string): Promise<IResponseData<T>> {
-        return this.http.delete(this.url + id).map(res => res.json()).toPromise().then(data => { return data; });
+        return this.http.delete(this.url + id).toPromise().then((data: IResponseData<T>) => { return data; });
     }
 
-    update(item: T, id: string): Promise<IResponseData<T>> {
+    update(item: Partial<T>, id: string): Promise<IResponseData<T>> {
         let urlExt = this.url + 'update/' + id;
-        return this.http.put(urlExt, item).map(res => res.json()).toPromise().then(data => { return data; });
+        return this.http.put(urlExt, item).toPromise().then((data: IResponseData<T>) => { return data; });
     }
     checkResponse(response) {
         /*if (response.type === 1100)
@@ -54,41 +52,41 @@ export class ApiService<T> {
 }
 
 export class HttpHeader {
-    http: Http;
-    constructor(http: Http) {
+    http: HttpClient;
+    constructor(http: HttpClient) {
         this.http = http;
     }
 
-    createAuthorizationHeader(headers: Headers) {
-        if (ThisUser.loginToken)
-            headers.append('Authorization', ' Bearer ' + ThisUser.loginToken);
+    createAuthorizationHeader() {
+        let headers = new HttpHeaders();
+        if (ThisUser.loginToken) {
+            return headers.append('Authorization', ' Bearer ' + ThisUser.loginToken);
+        }
+        return headers;
     }
 
     get(url: string) {
-        let headers = new Headers();
-        this.createAuthorizationHeader(headers);
+        const headers = this.createAuthorizationHeader();
         return this.http.get(url, {
             headers: headers
         });
     }
 
     post(url: string, data: Object) {
-        let headers = new Headers();
-        this.createAuthorizationHeader(headers);
+        const headers = this.createAuthorizationHeader();
+        console.log(headers)
         return this.http.post(url, data, {
             headers: headers
         });
     }
     put(url: string, data: Object) {
-        let headers = new Headers();
-        this.createAuthorizationHeader(headers);
+        const headers = this.createAuthorizationHeader();
         return this.http.put(url, data, {
             headers: headers
         });
     }
     delete(url: string) {
-        let headers = new Headers();
-        this.createAuthorizationHeader(headers);
+        const headers = this.createAuthorizationHeader();
         return this.http.delete(url, {
             headers: headers
         });

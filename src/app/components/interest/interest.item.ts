@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
     styleUrls: ['./interest.item.css']
 })
 
-export class InterestItem implements OnInit {
+export class InterestItemComponent implements OnInit {
     @Input() interest;
     @Input() myInterests = [];
     checked = false;

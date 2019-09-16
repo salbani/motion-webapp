@@ -27,7 +27,7 @@ export class TagInputComponent implements ControlValueAccessor, OnInit {
   @Input() pasteSplitPattern: string = ',';
   @Input() placeholder: string = 'Add a tag';
   @HostBinding('class.ng2-tag-input-focus') isFocused;
-  @ViewChild('tagInputForm') tagInputForm: NgForm;
+  @ViewChild('tagInputForm', { static: false }) tagInputForm: NgForm;
 
   valid = false;
   public tagsList: string[] = [];

@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { config } from '../../constants/config';
 
 @Injectable()
 export class LanguageService {
     language: languageFile.RootObject;
     currentLanguage: string;
-    constructor(private _http: Http) { }
+    constructor() { }
 
 
     setLanguage(choice?: string) {

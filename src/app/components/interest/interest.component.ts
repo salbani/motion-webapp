@@ -13,7 +13,7 @@ import { IUser } from '../../util/interfaces/user';
 
 export class InterestsComponent implements OnInit {
     
-    interests = [
+    interests: { name: string; photo: string; related?: string[]; }[] = [
         {
             name: 'Sport',
             photo: 'http://assets.bluefingroup.co.uk/media/filer_public_thumbnails/filer_public/30/dc/30dcb5b3-815d-4e4c-af3e-d2823050911c/sports_montage_-_chosen_concept_v9_carouselv3_rgb.jpg__1600x580_q85_crop_upscale.jpg',

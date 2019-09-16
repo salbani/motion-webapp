@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { ApiService, ThisUser } from './api.service';
 import { md5 } from './md5.service';
 import { IUser } from '../interfaces/user';
 import { IResponseData } from '../interfaces/responseData';
-import 'rxjs/add/operator/toPromise';
+import { ICreadentials } from '../interfaces/Credentials';
 
 
 @Injectable()
@@ -25,7 +25,7 @@ export class UserService extends ApiService<IUser> {
             return false;
     }
 
-    constructor(public __http: Http) {
+    constructor(public __http: HttpClient) {
         super(__http, 'user/');
     }
 
@@ -64,17 +64,17 @@ export class UserService extends ApiService<IUser> {
 
     private me(): Promise<IResponseData<IUser>> {
         let urlExt = 'me/';
-        return this.http.get(this.url + urlExt).map(res => res.json()).toPromise().then(data => { return data; });
+        return this.http.get(this.url + urlExt).toPromise().then((data: IResponseData<IUser>) => { return data; });
     }
 
-    create(item: IUser): Promise<IResponseData<null>> {
+    create(item: ICreadentials | IUser): Promise<IResponseData<null>> {
         let urlExt = 'signup';
-        return this.http.post(this.url + urlExt, item).map(res => res.json()).toPromise().then(data => { return data; });
+        return this.http.post(this.url + urlExt, item).toPromise().then((data: IResponseData<null>) => { return data; });
     }
 
-    login(item: IUser): Promise<IResponseData<{ token: string }>> {
+    login(item: ICreadentials): Promise<IResponseData<{ token: string }>> {
         let urlExt = 'login';
-        return this.http.post(this.url + urlExt, item).map(res => res.json()).toPromise().then(data => { return data; });
+        return this.http.post(this.url + urlExt, item).toPromise().then((data: IResponseData<null>) => { return data; });
     }
 
     logout() {
@@ -83,31 +83,31 @@ export class UserService extends ApiService<IUser> {
 
     bookmark(postId: string): Promise<IResponseData<null>> {
         let urlExt = 'bookmark/' + postId;
-        return this.http.get(this.url + urlExt).map(res => res.json()).toPromise().then(data => { return data; });
+        return this.http.get(this.url + urlExt).toPromise().then((data: IResponseData<null>) => { return data; });
     }
     unBookmark(postId: string): Promise<IResponseData<null>> {
         let urlExt = 'unbookmark/' + postId;
-        return this.http.get(this.url + urlExt).map(res => res.json()).toPromise().then(data => { return data; });
+        return this.http.get(this.url + urlExt).toPromise().then((data: IResponseData<null>) => { return data; });
     }
 
     connect(id: string): Promise<IResponseData<null>> {
         let urlExt = 'follow/' + id;
-        return this.http.get(this.url + urlExt).map(res => res.json()).toPromise().then(data => { return data; });
+        return this.http.get(this.url + urlExt).toPromise().then((data: IResponseData<null>) => { return data; });
     }
 
     disconnect(id: string): Promise<IResponseData<null>> {
         let urlExt = 'unfollow/' + id;
-        return this.http.get(this.url + urlExt).map(res => res.json()).toPromise().then(data => { return data; });
+        return this.http.get(this.url + urlExt).toPromise().then((data: IResponseData<null>) => { return data; });
     }
 
     changePassword(item): Promise<IResponseData<null>> {
         let urlExt = 'changePassword/';
-        return this.http.post(this.url + urlExt, item).map(res => res.json()).toPromise().then(data => { return data; });
+        return this.http.post(this.url + urlExt, item).toPromise().then((data: IResponseData<null>) => { return data; });
     }
 
     newPassword(item): Promise<IResponseData<null>> {
         let urlExt = 'resetpassword';
-        return this.http.post(this.url + urlExt, item).map(res => res.json()).toPromise().then(data => { return data; });
+        return this.http.post(this.url + urlExt, item).toPromise().then((data: IResponseData<null>) => { return data; });
     }
 
     isUsersId(id: string) {

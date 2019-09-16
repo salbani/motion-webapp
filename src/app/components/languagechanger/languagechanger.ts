@@ -8,7 +8,7 @@ import { LanguageService } from '../../util/services/language.service';
 })
 
 
-export class LanguageChanger implements OnInit {
+export class LanguageChangerComponent implements OnInit {
 
     newLanguageToastAction = new EventEmitter<string>();
 

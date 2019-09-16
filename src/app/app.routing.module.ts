@@ -12,7 +12,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { PasswordResetComponent } from './components/passwordreset/passwordreset';
 import { TermsComponent } from './components/terms/terms.component';
 import { ConnectedUserComponent } from './components/connecteduser/connecteduser.component';
-import { LoginByToken } from './components/loginbytoken/loginbytoken';
+import { LoginByTokenComponent } from './components/loginbytoken/loginbytoken';
 import { WavesComponent } from './components/waves/waves.component';
 import { CreateWaveComponent } from './components/waves/createwave.component';
 import { InitResolver } from './util/services/InitReslover.service';
@@ -144,7 +144,7 @@ const routes: Routes = [
   },
   {
     path: 'loginbytoken/:token',
-    component: LoginByToken,
+    component: LoginByTokenComponent,
     resolve: {
       init: InitResolver
     }

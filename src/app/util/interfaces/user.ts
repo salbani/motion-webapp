@@ -15,4 +15,13 @@ export interface IUser extends IMongooseDocument {
     homepage?: string;
     isGoogle?: boolean;
     interests?: string[];
+    local: IUserInfo;
+    google: IUserInfo;
+    facebook: IUserInfo;
+    twitter: IUserInfo;
+    wordpress: IUserInfo;
+}
+
+export interface IUserInfo {
+    email: string;
 }

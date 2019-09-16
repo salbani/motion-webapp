@@ -18,7 +18,7 @@ import * as Quill from 'quill';
 
 export class ArticleComponent implements OnInit, OnDestroy {
 
-    @ViewChild('container') QuillContainer: ElementRef;
+    @ViewChild('container', { static: true }) QuillContainer: ElementRef;
     post: IPost = {
         title: '',
         content: '',

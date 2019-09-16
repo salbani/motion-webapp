@@ -51,7 +51,7 @@ export class ParallaxDirective implements AfterViewInit {
 		});
 	}
 
-	UpdateParallax(event: UIEvent): any {
+	UpdateParallax(event: Event): any {
 		let containerHeight = this.Container.offsetHeight;
 		this.Image.style.top = (-1 * (this.Image.height - containerHeight) * ((0.5 - this.speed / 2) + (this.speed * (this.Container.getBoundingClientRect().top + (containerHeight / 2)) / (window.innerHeight)))) + "px";
 	}

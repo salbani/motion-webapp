@@ -47,7 +47,10 @@ export class FeedComponent implements OnInit {
 		let getPersonalFeedRes = await this._postService.getPersonalFeed(this.load);
 		if (getPersonalFeedRes.type === 1000) {
 			for (let post of getPersonalFeedRes.data.posts) {
-				posts.push(post.post);
+				if(typeof post.post !== 'string')
+					posts.push(post.post);
+				else
+					console.log('post.post was unexpectedly a string')
 			}
 		}
 		return posts;

@@ -144,5 +144,5 @@ export const English = {
         "confPw": "Confirm new password",
         "save": "Save",
         "wrong": "Wrong Password!"
-    }
+    },
 }

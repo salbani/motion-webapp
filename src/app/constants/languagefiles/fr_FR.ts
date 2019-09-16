@@ -107,5 +107,8 @@ export const French = {
     "changePasswordComponent":{
         "changePassword": "Change Password",
         "wrong": "Wrong Password!"
+    },
+    "relatedComponent": {
+        "noRelated": "no related Posts Found"
     }
 }

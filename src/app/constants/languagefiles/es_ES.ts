@@ -128,5 +128,8 @@ export const Spanish = {
     "changePasswordComponent": {
         "changePassword": "Cambiar contraseña",
         "wrong": "¡Contraseña incorrecta!"
+    },
+    "relatedComponent": {
+        "noRelated": "no related Posts Found"
     }
 }

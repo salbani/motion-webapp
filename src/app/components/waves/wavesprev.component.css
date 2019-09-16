@@ -1,0 +1,76 @@
+.heading {
+    display: inline-block;
+}
+
+.new-wave-floading-btn  {
+    border: 1px solid #9E9E9E;
+    border-radius: 200px;
+    margin-left: 15px;
+}
+
+.waves-slider {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    margin: 0 auto;
+    padding: 10px 10px;
+}
+
+/*
+ *  waves-scrollbar
+ */
+#waves-scrollbar::-webkit-scrollbar-track
+{
+	border-radius: 6px;
+	background-color: #ccc;
+}
+#waves-scrollbar::-webkit-scrollbar
+{
+	height: 6px;
+	background-color: #F5F5F5;
+}
+#waves-scrollbar::-webkit-scrollbar-thumb
+{
+	border-radius: 6px;
+	background-color: rgba(0,0,0,0.5);
+}
+
+
+.wave {
+    margin-right: 20px; 
+}
+
+.wave-image {
+    height: 250px;
+    width: 400px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.new-wave {
+    height: 311px; 
+    width: 400px;
+    display: inline-table;
+}
+
+.new-wave .icon-text {
+    color: grey;
+}
+.new-wave .icon-text i {
+    border: 2px solid #9E9E9E;
+    color: #9E9E9E;
+    border-radius: 200px;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width : 600px) {
+    .wave-image {
+        height: 150px;
+        width: 250px;
+    }
+    .new-wave {
+        height: 211px; 
+        width: 250px;
+    }
+}

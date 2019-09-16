@@ -1,0 +1,10 @@
+<div *ngIf='following&&_languageService.language&&user'>
+	<div *ngFor='let user of following'>
+		<img class="user-info avatar" *ngIf="_loggedUserService.user" [src]="_loggedUserService.user.avatar">
+		<userways [user]='user' [profile]='true'></userways>
+		<div *ngIf="!isUserMe" class="user-info connect">
+			<button class="btn btn-default waves-effect waves-light light-blue lighten-1" (click)="connect(user) ">{{connection === 0 ?  _languageService.language.userComponent.connect: _languageService.language.userComponent.disconnect}}</button>
+		</div>
+	</div>
+
+</div>

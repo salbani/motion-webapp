@@ -1,0 +1,125 @@
+h1 {
+    margin-top: 0;
+}
+
+img.loading-image {
+    background-color:lightgrey;
+    -webkit-animation: rainbow-bg 15s infinite alternate linear; 
+    -moz-animation: rainbow-bg 15s infinite alternate linear; 
+}
+
+ @-webkit-keyframes rainbow-bg {
+    0% {
+        background: #ff2400;
+    }
+    20% {
+        background: #e8b71d;
+    }
+    40% {
+        background: #1de840;
+    }
+    60% {
+        background: #1ddde8;
+    }
+    80% {
+        background: #2b1de8;
+    }
+    100% {
+        background: #dd00f3;
+    }
+}
+@-moz-keyframes rainbow-bg {
+    0% {
+        background: #ff2400;
+    }
+    20% {
+        background: #e8b71d;
+    }
+    40% {
+        background: #1de840;
+    }
+    60% {
+        background: #1ddde8;
+    }
+    80% {
+        background: #2b1de8;
+    }
+    100% {
+        background: #dd00f3;
+    }
+}
+    
+@-o-keyframes rainbow-bg {
+    0% {
+        background: #ff2400;
+    }
+    20% {
+        background: #e8b71d;
+    }
+    40% {
+        background: #1de840;
+    }
+    60% {
+        background: #1ddde8;
+    }
+    80% {
+        background: #2b1de8;
+    }
+    100% {
+        background: #dd00f3;
+    }
+}
+
+@keyframes rainbow-bg {
+    0% {
+        background: #ff2400;
+    }
+    20% {
+        background: #e8b71d;
+    }
+    40% {
+        background: #1de840;
+    }
+    60% {
+        background: #1ddde8;
+    }
+    80% {
+        background: #2b1de8;
+    }
+    100% {
+        background: #dd00f3;
+    }
+}
+
+
+/*img.loading-image {
+    background-color:lightgrey;
+background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+background-size: 500% 500%;
+
+-webkit-animation: rainbow-bg 18s ease infinite;
+-z-animation: rainbow-bg 18s ease infinite;
+-o-animation: rainbow-bg 18s ease infinite;
+animation: rainbow-bg 18s ease infinite;
+}
+
+@-webkit-keyframes rainbow-bg {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow-bg {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow-bg {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@keyframes rainbow-bg { 
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}*/

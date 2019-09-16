@@ -1,0 +1,29 @@
+
+.wave-item {
+    width: 100%;
+}
+
+.wave-checked {
+    display: flex;
+    margin-right: 0px;
+}
+
+img {
+    max-width: 90px;
+}
+
+.wave-name-wrap {
+    width: 100;
+}
+.wave-name {
+    padding: 0 10px 0 25px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.wave-checked i {
+    /*width: 48px;
+    height: 48px;*/
+}

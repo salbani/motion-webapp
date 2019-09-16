@@ -1,0 +1,46 @@
+<nav class="navbar-top animation-slide-from-top" *ngIf='_languageService.language'>
+    <div class="nav-wrapper white">
+        <languagechanger [hide]="true"></languagechanger>
+        <a routerLink="/profile" class="brand-logo valign-wrapper"><img class="mtn-logo hide-on-med-and-down" src="img/logo/logo-color.png"></a>
+        <a href="#" data-activates="nav-mobile" materialize="sideNav" [materializeParams]="sidenavParams" [materializeActions]="sidenavActions" class="button-collapse"><i class="material-icons grey-text">menu</i></a>
+        <!--<a href="#" data-activates="nav-mobile" materialize="sideNav" class="button-collapse"><i class="material-icons grey-text">menu</i></a>-->
+        <ul id="nav-desktop" class="right hide-on-med-and-down">
+            <li *ngIf='!_userService.isLoggedIn' routerLinkActive="active"><a class="tooltipped grey-text waves-effect waves-light" routerLink="/signup" materialize="tooltip" data-position="bottom" data-delay="1000" [attr.data-tooltip]="_languageService.language.navbarComponent.signup">Signup</a></li>
+            <li routerLinkActive="active"><a class="tooltipped grey-text waves-effect waves-light" routerLink="/createpost" materialize="tooltip" data-position="bottom" data-delay="1000" [attr.data-tooltip]="_languageService.language.navbarComponent.writeSomething"><i class="fa fa-pencil fa-icon" aria-hidden="true"></i></a></li>
+            <li routerLinkActive="active"><a class="tooltipped grey-text waves-effect waves-light" routerLink="/posts" materialize="tooltip" data-position="bottom" data-delay="1000" [attr.data-tooltip]="_languageService.language.navbarComponent.posts"><i class="fa fa-th-list fa-icon" aria-hidden="true"></i></a></li>
+            <li *ngIf='_userService.isLoggedIn' materialize="tooltip" class="tooltipped" data-position="bottom" data-delay="1000" [attr.data-tooltip]="_languageService.language.navbarComponent.settings">
+                <div><a materialize="dropdown" data-activates='dd-settings' data-beloworigin="true" class="dropdown-button grey-text waves-effect waves-light"><i class="fa fa-cog fa-icon" aria-hidden="true"></i></a></div>
+            </li>
+            <li *ngIf='!_userService.isLoggedIn' routerLinkActive="active"><a class="tooltipped grey-text waves-effect waves-light" on-click="logout()" materialize="tooltip" data-position="bottom" data-delay="1000" data-html="true" [attr.data-tooltip]="_languageService.language.navbarComponent.login"><i class="fa fa-sign-in fa-icon" aria-hidden="true"></i></a></li>
+            <li>
+                <languagechanger></languagechanger>
+            </li>
+        </ul>
+
+        <ul (click)="close()" class="side-nav" id="nav-mobile">
+            <li *ngIf='user' routerLink="/profile">
+                <div class="userView">
+                    <div class="background grey valign-wrapper" style="min-height: 200px;">
+                        <img style="width:100%;" class="valign" *ngIf="user.landscape" [src]="user.landscape">
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a class="grey-text waves-effect waves-light" routerLink="/posts"><img class="material-icons left mtn-logo" src="img/logo/logo-color.png">Start</a>
+            </li>
+            <li routerLinkActive="active"><a class="grey-text waves-effect waves-light" routerLink="/createpost"><i class="material-icons left">create</i>{{_languageService.language.navbarComponent.writeSomething}}</a></li>
+            <li routerLinkActive="active"><a class="grey-text waves-effect waves-light" routerLink="/posts"><i class="material-icons left">view_list</i>{{_languageService.language.navbarComponent.posts}}</a></li>
+            <li *ngIf='_userService.isLoggedIn' routerLinkActive="active"><a class="grey-text waves-effect waves-light" routerLink="/profile"><i class="material-icons left">account_circle</i>{{_languageService.language.navbarComponent.profile}}</a></li>
+            <li *ngIf='_userService.isLoggedIn' routerLinkActive="active"><a class="grey-text waves-effect waves-light" routerLink="/edituser"><i class="material-icons left">settings</i>{{_languageService.language.navbarComponent.edit}}</a></li>
+            <li routerLinkActive="active"><a class="grey-text waves-effect waves-light" on-click="logout()"><i class="material-icons left">remove_circle</i>{{_userService.isLoggedIn ? _languageService.language.navbarComponent.logout : _languageService.language.navbarComponent.login}}</a></li>
+            <li routerLinkActive="active"><a *ngIf='!_userService.isLoggedIn' class="grey-text waves-effect waves-light" routerLink="/signup">{{_languageService.language.navbarComponent.signup}}</a></li>
+            <languagechanger></languagechanger>
+        </ul>
+    </div>
+
+    <ul id='dd-settings' class='dropdown-content' style="display: table;">
+        <li *ngIf='_userService.isLoggedIn'><a routerLink="/edituser" class="grey-text waves-effect waves-light modal-trigger flex" href="#edituser"><i class="left fa fa-cogs fa-icon" aria-hidden="true"></i>{{_languageService.language.navbarComponent.edit}}</a></li>
+        <li class="divider"></li>
+        <li><a class="grey-text waves-effect waves-light flex" on-click="logout()"><i class="left fa fa-sign-out fa-icon" aria-hidden="true"></i>{{_languageService.language.navbarComponent.logout}}</a></li>
+    </ul>
+</nav>

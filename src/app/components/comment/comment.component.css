@@ -1,0 +1,14 @@
+.card-action {
+    padding: 10px 0px 20px 0px;
+}
+
+.comment-reply {
+    margin-bottom: 25px;
+    display: inline-block;
+    width: 100%;
+}
+
+.comment {
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 20px;
+}

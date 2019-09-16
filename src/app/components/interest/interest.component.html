@@ -1,0 +1,19 @@
+<div id="interests" class="modal modal-fixed-footer" materialize="closeModal" [materializeParams]="params">
+    <div class="modal-content">
+        <h4 class="title-styled">Interests</h4>
+        <div class="section">
+            <div *ngIf="myInterests">
+                <div *ngFor="let interest of interests" class="interest-box">
+                    <interestitem (addNewInterest)="addNewInterest($event,true)" (deleteInterest)="addNewInterest($event,false)" [interest]="interest"
+                        [myInterests]="myInterests"></interestitem>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a (click)="updateInterests()" class="modal-action modal-close btn btn-flat waves-effect waves-light light-blue white-text">Save Interests</a>
+    </div>
+</div>
+
+<a materialize="leanModal" [materializeParams]="[{dismissible: true}]" class="btn btn-flat waves-effect waves-light white-text light-blue lighten-1 modal-trigger"
+    href="#interests">Interests</a>

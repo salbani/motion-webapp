@@ -1,0 +1,9 @@
+<div>
+    <button *ngIf="isBookmarked" (click)="bookmark()" materialize="tooltip" data-position="bottom" data-delay="1000" [attr.data-tooltip]="'Remove from list'" class="tooltipped btn-floating btn-flat waves-effect waves-light white-text light-blue lighten-1" alt="">
+        <i class="material-icons">bookmark</i>
+    </button>
+    <button *ngIf="!isBookmarked" (click)="bookmark()" materialize="tooltip" data-position="bottom" data-delay="1000" [attr.data-tooltip]="'Read Later'" class="tooltipped btn-floating btn-flat waves-effect waves-light white-text light-blue lighten-1"
+        alt="">
+        <i class="material-icons">bookmark_border</i>
+    </button>
+</div>

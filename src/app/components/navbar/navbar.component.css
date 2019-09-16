@@ -1,0 +1,84 @@
+nav .brand-logo {
+  color: #fff;
+}
+
+nav .brand-logo {
+  padding: 0 15px;
+  height: inherit;
+}
+
+nav .mtn-logo {
+  height: 64px;
+  padding: 10px 0px;
+}
+
+nav #nav-mobile .mtn-logo {
+  height: 44px;
+  margin: 0 27px 0 0;
+}
+
+nav #nav-desktop {
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+nav li a {
+  font-family: 'Ubuntu', Roboto, Verdana, sans-serif;
+  font-weight: 300;
+}
+
+nav ul a {
+    color: grey
+}
+
+.nav-wrapper {
+  background: #fafafa;
+  background: -moz-linear-gradient(bottom,  #fafafa 0%, #ffffff 100%);
+  background: -webkit-linear-gradient(bottom,  #fafafa 0%,#ffffff 100%);
+  background: linear-gradient(to top,  #fafafa 0%,#ffffff 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#ffffff',GradientType=0 );
+}
+
+.button-collapse {
+  margin-left: 10px;
+  position: absolute;
+}
+
+.navbar-top {
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+}
+
+#languages {
+  width: 30%;
+}
+
+.languages-container {
+  cursor: pointer;
+}
+
+/*.fa-icon {
+  font-size: 1.2rem !important;
+      height: 64px;
+    line-height: 64px;
+}*/
+
+
+
+
+/* Media */
+
+@media only screen and (max-width : 992px) {
+  #languages {
+    width: 45%;
+  }
+} /* Media closing */
+
+@media only screen and (max-width : 600px) {
+  #languages {
+    width: 90%;
+  }
+} /* Media closing */
+

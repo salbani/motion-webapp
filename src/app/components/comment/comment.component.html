@@ -1,0 +1,25 @@
+<div class="col s12">
+	<div *ngIf='_languageService.language' class="section">
+		<div class="comment row">
+			<!--<img *ngIf="comment.user.photo" src="comment.user.photo" alt="Hello Moto">-->
+			<div class="chip" style="cursor: pointer" (click)="goToUser()">{{comment.userName}}</div>
+			<p>{{comment.content}}</p>
+			<div class="comment-actions">
+				<button *ngIf="commentsEnabled" (click)="showCommentArea()" class="btn btn-flat waves-effect waves-light grey-text"><i class="material-icons left">reply</i>{{_languageService.language.commentComponent.reply}}</button>
+				<voting [votes]="comment.votes"  [upvote]="upvote" [downvote]="downvote" [unvote]="unvote" [myVote]="myVote"></voting>
+			</div>
+		</div>
+		<div *ngIf="commentsEnabled" class="comment-replies col s11 offset-s1">
+			<div class="section">
+				<div *ngIf="isCommenting" class="comment-reply animation-slide-from-top">
+					<!--<i class="material-icons prefix">reply</i>-->
+					<textarea [(ngModel)]="newComment" class="materialize-textarea " id="textinput" type="text" placeholder="reply here"></textarea>
+					<button class="btn btn-flat waves-effect waves-light light-blue lighten-1 white-text right" (click)="addComment()"><i class="material-icons left">reply</i>{{_languageService.language.commentComponent.reply}}</button>
+					<button (click)="closeCommentArea()" class="btn btn-flat waves-effect waves-light grey-text right"><i class="material-icons left">close</i>{{_languageService.language.commentComponent.cancel}}</button>
+				</div>
+				<comment *ngFor="let commentcomment of comment.comments" [comment]="commentcomment" [commentId]="comment._id" [commentsEnabled]="false"></comment>
+			</div>
+		</div>
+		
+	</div>
+</div>

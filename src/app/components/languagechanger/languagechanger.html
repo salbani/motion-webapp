@@ -1,0 +1,43 @@
+<div id="languages" class="modal" materialize="closeModal" [materializeParams]="params" *ngIf='_languageService.language'>
+    <div class="modal-content">
+        <h4 class="title-styled">{{_languageService.language.navbarComponent.languages}}</h4>
+        <div class="row">
+            <p class="grey-text">{{_languageService.language.navbarComponent.chooseLanguage}}</p>
+        </div>
+
+        <div class="collection languages-container"  materialize [materializeParams]="[_languageService.currentLanguage,4000]" [materializeActions]="newLanguageToastAction">
+            <a id="german" [class.active]="_languageService.currentLanguage =='German'" class="collection-item grey-text text-darken-2 waves-effect waves-light"
+                (click)='changeLanguage("German")'>
+				{{_languageService.language.navbarComponent.german}}
+				<div class="secondary-content">
+					<div class="flag-icon flag-icon-de flag-icon-squared"></div>
+				</div>
+			</a>
+            <a id="english" [class.active]="_languageService.currentLanguage =='English'" class="collection-item grey-text text-darken-2 waves-effect waves-light"
+                (click)='changeLanguage("English")'>
+				{{_languageService.language.navbarComponent.english}}
+				<div class="secondary-content">
+					<div class="flag-icon flag-icon-us flag-icon-squared"></div>
+				</div>
+			</a>
+            <a id="spanish" [class.active]="_languageService.currentLanguage =='Spanish'" class="collection-item grey-text text-darken-2 waves-effect waves-light" 
+                (click)='changeLanguage("Spanish")'>
+				{{_languageService.language.navbarComponent.spanish}}
+				<div class="secondary-content">
+					<div class="flag-icon flag-icon-es flag-icon-squared"></div>
+				</div>
+			</a>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-light btn-flat">{{_languageService.language.navbarComponent.close}}</a>
+    </div>
+</div>
+
+<div *ngIf="!hide">
+    <li class="hide-on-large-only"><a materialize="leanModal" [materializeParams]="[{dismissible: true}]" class="grey-text waves-effect waves-light modal-trigger" href="#languages"><i class="material-icons left">languages</i>{{_languageService.language.navbarComponent.languages}}</a></li>
+    <div materialize="tooltip" data-position="bottom" data-delay="1000" [attr.data-tooltip]="_languageService.language.navbarComponent.languages" class="hide-on-med-and-down tooltipped">
+        <a materialize="leanModal" [materializeParams]="[{dismissible: true}]" class="grey-text waves-effect waves-light modal-trigger" href="#languages"><i class="fa fa-globe fa-icon" aria-hidden="true"></i>
+	</a>
+    </div>
+</div>

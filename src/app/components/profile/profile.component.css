@@ -1,0 +1,36 @@
+.profile-card {
+    margin-bottom: 0;
+} 
+
+.hide-on-small-only .profile-card-outer {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
+
+/* Media */
+
+@media only screen and (max-width : 992px) {
+    .parallax-container {
+        height: 400px;
+    }
+} /* Media closing */
+
+@media only screen and (max-width : 600px) {
+    .parallax-container {
+        height: 250px;
+    }
+} /* Media closing */
+
+@media only screen and (max-width : 450px) {
+    .parallax-container {
+        height: 200px;
+    }
+} /* Media closing */
+
+@media only screen and (max-width : 350px) {
+    .parallax-container {
+        height: 170px;
+    }
+} /* Media closing */

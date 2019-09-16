@@ -1,0 +1,27 @@
+<div *ngIf="!sendReport">
+    <button materialize="leanModal" [materializeParams]="[{dismissible: true}]" href="#report" class="btn btn-flat waves-effect waves-light white-text light-blue lighten-1 modal-trigger"
+        (click)="sendReport = true">Report</button>
+</div>
+
+<div id="report" class="modal" materialize="closeModal" [materializeParams]="params">
+    <div *ngIf="sendReport">
+        <form #reportForm="ngForm">
+            <div class="modal-content">
+                <h3 class="title-styled">Report: Reason</h3>
+                <div class="">
+                    <div class="input-field">
+                        <textarea placeholder="Why are you reporting this?" class="materialize-textarea" materialize="characterCounter" length="150"
+                            name="reason" reason="reason" minlength="10" id="reason" type="text" [(ngModel)]="reportItem.reason"
+                            #reason="ngModel" required></textarea>
+                        <label class="hide" for="reason">Reason</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button materialize [materializeParams]="['Succes',4000]" [materializeActions]="reportsended"
+                    class="btn btn-flat modal-action modal-close waves-effect waves-light white-text light-blue lighten-1" (click)="report()" type="submit"
+                    [disabled]="!reportForm.form.valid">Send</button>
+            </div>
+        </form>
+    </div>
+</div>

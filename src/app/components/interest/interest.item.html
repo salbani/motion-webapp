@@ -1,0 +1,10 @@
+<div class="interest-outer">
+    <div style="cursor: pointer" class="interest-image">
+        <div class="interest-image waves-effect waves" [ngStyle]="{'background-image':'url(' + interest.photo + ')'}" (click)="addInterest()">
+            <div class="interest-checked" *ngIf="checked">
+                <i class="small material-icons checked-light">check_circle</i>
+            </div>
+            <span class="interest-name">{{interest.name}}</span>
+        </div>
+    </div>
+</div>

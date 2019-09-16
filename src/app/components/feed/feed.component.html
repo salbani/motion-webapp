@@ -1,0 +1,11 @@
+<div *ngIf='_languageService.language' class="base-inner">
+    <div class="comp-title comp-title-bg">
+        <h3 class="title-styled">{{_languageService.language.feedComponent.posts}}</h3>
+    </div>
+    <div class="container section">
+        <div *ngIf="posts" class="search-results" infinite-scroll [infiniteScrollDistance]="2" (scrolled)="loadMore()">
+            <card *ngFor="let post of posts" [post]="post"></card>
+        </div>
+        <!--TODO loader icon-->
+    </div>
+</div>

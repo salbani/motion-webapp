@@ -1,0 +1,20 @@
+.btn.upvote {
+    border: 1px solid rgba(0,0,0,0.3);
+    -moz-border-radius: 5px 0 0 5px;
+    -webkit-border-radius: 5px 0 0 5px;
+    border-radius: 5px 0 0 5px;
+}
+.btn.downvote {
+    border: 1px solid rgba(0,0,0,0.3);
+    border-left-width: 0;
+    -moz-border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 0 5px 5px 0;
+    border-radius: 0 5px 5px 0;
+}
+
+.upvoted .btn {
+    background-color: #00e676 !important;
+}
+.downvoted .btn {
+    background-color: #f44336 !important;
+}

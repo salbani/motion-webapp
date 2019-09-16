@@ -1,0 +1,77 @@
+<div class="base-outer">
+	<div *ngIf='_languageService.language' class="base-inner">
+		<div class="signup row">
+			<div class="card col s10 offset-s1 m6 offset-m3 l4 offset-l4 animation-fade-in">
+				<div class="container">
+					<form on-ngSubmit="onSignup()" #signupForm="ngForm">
+						<div class="row">
+							<h4 class="title-styled center-align">{{_languageService.language.signupComponent.signup}}</h4>
+							<div class="input-field col s12">
+								<input name="email" email="email" id="email" type="email" [(ngModel)]="credentials.email" #email="ngModel" required>
+								<div class="alert alert-danger" [hidden]="email.valid || email.pristine">
+									{{_languageService.language.signupComponent.emailReq}}
+								</div>
+								<label class="label-with-icon" for="email"><i class="material-icons left">email</i>{{_languageService.language.signupComponent.email}}</label>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="input-field col s12">
+								<input name="password" password="password" id="password" type="password" [(ngModel)]="credentials.password" #password="ngModel"
+									required>
+								<div class="alert alert-danger" [hidden]="password.valid || password.pristine">
+									{{_languageService.language.signupComponent.passwordReq}}
+								</div>
+								<label class="label-with-icon" for="password"><i class="material-icons left">lock</i>{{_languageService.language.signupComponent.password}}</label>
+								<div (click)='togglePasswordVisibility()' class="showhidepw">
+                                    <i class="showhidepwicon fa fa-eye" [class.fa-eye]="!showPassword" [class.fa-eye-slash]="showPassword" aria-hidden="true"></i>
+                                    <span>{{ showPassword ? _languageService.language.signupComponent.hidePw : _languageService.language.signupComponent.showPw }}</span>
+                                </div>
+								<div class="row">
+									<input id="termscheck" type="checkbox" name="check" required ngModel>
+									<label for="termscheck">{{_languageService.language.signupComponent.iAgree}} <a routerLink="/terms">{{_languageService.language.signupComponent.terms}}</a></label>
+								</div>
+							</div>
+						</div>
+
+						<div class="center">
+							<p *ngIf="error" class="center alert-text">{{_languageService.language.signupComponent.wrongEoP}}</p>
+							<div class="row">
+								<button class="btn btn-default waves-effect waves-light light-blue lighten-1" type="submit" [disabled]="!signupForm.form.valid">{{_languageService.language.signupComponent.register}}</button>
+							</div>
+							<div class="row">
+								<p class="center-align">{{_languageService.language.signupComponent.already}} <a routerLink="/login">{{_languageService.language.signupComponent.here}}</a>									{{_languageService.language.signupComponent.toLogin}}</p>
+							</div>
+						</div>
+					</form>
+
+					<div class="row">
+						<div class="half-devider">
+							<div class="line"></div>
+							<p>{{_languageService.language.signupComponent.or}}</p>
+							<div class="line"></div>
+						</div>
+					</div>
+
+					<form #socialForm="ngForm">
+						<div class="row">
+							<input id="termscheckSocial" type="checkbox" name="checkSocial" required ngModel>
+							<label for="termscheckSocial">{{_languageService.language.signupComponent.iAgree}} <a routerLink="/terms">{{_languageService.language.signupComponent.terms}}</a></label>
+						</div>
+						<div class="row center social-login">
+							<button type="submit" [disabled]="!socialForm.form.valid" class="waves-effect waves-light btn modal-trigger blue darken-4 z-depth-0"
+								(click)="facebook()" href="#loginfacebook">Facebook<i class="fa fa-facebook" aria-hidden="true"></i></button>
+							<button type="submit" [disabled]="!socialForm.form.valid" class="waves-effect waves-light btn modal-trigger red darken-2 z-depth-0"
+								(click)="google()">Google+<i class="fa fa-google-plus" aria-hidden="true"></i></button>
+							<button type="submit" [disabled]="!socialForm.form.valid" class="waves-effect waves-light btn modal-trigger light-blue lighten-1 z-depth-0"
+								(click)="twitter()" href="#logintwitter">Twitter<i class="fa fa-twitter" aria-hidden="true"></i></button>
+							<button type="submit" [disabled]="!socialForm.form.valid" class="waves-effect waves-light btn modal-trigger blue-grey darken-2 z-depth-0"
+								(click)="wordpress()">Wordpress<i class="fa fa-wordpress" aria-hidden="true"></i></button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

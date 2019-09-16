@@ -1,0 +1,26 @@
+<div class="base-inner create-wave">
+    <div *ngIf="wave">
+        <div class="container">
+            <h4 class="title-styled">Create a Wave</h4>
+            <div class="input-field col s6">
+                <input type="text" placeholder="Wave Name" [(ngModel)]="wave.name" style="
+                    font-family: 'Lato', 'Times New Roman', Times, sans-serif;
+                    font-weight: 300;
+                    font-size: 3.56rem;
+                    margin: 1.78rem 0 1.424rem 0;
+                    padding-bottom: 20px;
+                ">
+            </div>
+            <div class="row">
+                <div class="col s12 m5">
+                    <fileuploader [title]="'Wave Cover'" (onImageSelected)="addPicture($event)"> </fileuploader>
+                </div>
+                <img class="section wave-preview col s12 m7" *ngIf="wave.photo" [src]="wave.photo">
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <a (click)="createWave()" class="waves-effect waves-light btn btn-default light-blue lighten-1 white-text">Create Wave</a>
+            </div>
+        </div>
+    </div>
+</div>

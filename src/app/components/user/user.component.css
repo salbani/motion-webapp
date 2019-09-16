@@ -1,0 +1,29 @@
+.avatar {
+    /*height: 150px;
+    width: 150px;*/
+    /*overflow: hidden;*/
+}
+
+.avatar img {
+    width: 150px;
+    height: 150px;
+    /*max-width: 100%;
+    max-height: 100%;*/
+    border-radius: 50%;
+}
+
+/* Media */
+
+@media only screen and (max-width : 992px) {
+    .user-info .avatar img {
+        height: 80px;
+        width: 80px;
+    }
+} /* Media closing */
+
+@media only screen and (max-width : 600px) {
+    .user-info .avatar img {
+        height: 60px;
+        width: 60px;
+    }
+} /* Media closing */

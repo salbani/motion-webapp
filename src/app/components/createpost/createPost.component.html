@@ -1,0 +1,80 @@
+<div class="base-inner grey lighten-5" style="height: 100%;">
+  <form on-ngSubmit="upload()" #postForm="ngForm">
+    <div class="createpost">
+      <div class="comp-title comp-title-bg">
+        <h3 class="title-styled">{{_languageService.language.createPostComponent.createPost}}</h3>
+      </div>
+      <div *ngIf="post.photo" class="post-image">
+        <div class="parallax-container">
+          <img parallax *ngIf="post.photo" [src]="post.photo">
+        </div>
+      </div>
+      <div class="post-bg-container white z-depth-0">
+        <div class="container">
+          <div class="row create-heading">
+            <div class="input-field col s12">
+              <textarea id="create-heading" class="materialize-textarea" placeholder="{{_languageService.language.createPostComponent.title}}"
+                name="title" materialize="characterCounter" length="100" [(ngModel)]="post.title" id="create-heading" type="text"
+                required></textarea>
+                <!--<label for="create-heading" class="">Heading</label>-->
+            </div>
+          </div>
+          <div class="row create-content">
+            <div class="col s12 sample">
+              <editor (contentOutput)="change($event)"  [content]="post.content"> </editor>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="post-bg-container">
+        <div class="container">
+          <div class="row">
+            <div class="tags">
+              <div class="col s12">
+                <!--<label for="add-tag" class="active">Tags</label>-->
+                <rl-tag-input *ngIf="post.tags" id="add-tag" type="text" name="tags" placeholder="{{_languageService.language.createPostComponent.tag}}"
+                  [(ngModel)]="post.tags" delimiterCode="18"></rl-tag-input>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m6 l6">
+              <div class="row" style="">
+                <div class="create-summary">
+                  <div class="input-field col s12">
+                    <textarea placeholder="{{_languageService.language.createPostComponent.shortSummary}}" class="materialize-textarea" [(ngModel)]="post.summary"
+                      name="summary" id="create-summary" type="text" materialize="characterCounter" length="150"></textarea>
+                      <label for="create-summary" class="active">{{_languageService.language.createPostComponent.intro}}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="fileupload col s12 m6 l6">
+              <fileuploader [choosenImg]="post.photo? post.photo: null" [title]="_languageService.language.createPostComponent.uploaderTitle"
+                croppingRatio="16 / 9" (onImageSelected)="addPicture($event)"> </fileuploader>
+                <img class="section cover-preview" *ngIf="post.photo" [src]="post.photo">
+                <div *ngIf="!post.photo" class="no-image">
+                  <div class="crossed-box-outer">
+                    <div class="crossed-box valign-wrapper">
+                      <i class="small material-icons">image</i>
+                    </div>
+                  </div>
+                  <!--<div class="center">No image</div>-->
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <button materialize [materializeParams]="['Updated',4000]" [materializeActions]="isUpdated" [disabled]="!postForm.form.valid"
+                class="btn btn-flat waves-effect waves-light white-text light-blue lighten-1" type="submit">{{isPostUploaded ? _languageService.language.createPostComponent.update : _languageService.language.createPostComponent.create}}</button>
+                <p *ngIf="!postForm.form.valid" class="alert-text">Make sure to set a heading, content, a cover image, a short summary and some tags for your publication.</p>
+                <p materialize [materializeParams]="['Published',4000]" [materializeActions]="published">{{required}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

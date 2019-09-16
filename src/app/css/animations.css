@@ -1,0 +1,44 @@
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.animation-fade-in {
+  animation-name: fade-in;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+}
+
+@keyframes slide-from-top {
+  0% {
+    top: -70;
+  }
+  100% {
+    top: 0;
+  }
+}
+.animation-slide-from-top {
+  animation-name: slide-from-top;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-direction: alternate;
+  animation-timing-function: ease-in;
+}
+
+.animation-pulse {
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}

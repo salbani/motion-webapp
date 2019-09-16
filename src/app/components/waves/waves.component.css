@@ -1,0 +1,27 @@
+.parallax-window {
+    min-height: 300px;
+    background: transparent;
+}
+
+
+/* Media */
+
+@media only screen and (max-width : 992px) {
+    .parallax-container {
+        height: 400px;
+        }
+} /* Media closing */
+
+@media only screen and (max-width : 600px) {
+    .parallax-container {
+        height: 180px;
+        margin-top: -10px;
+        }
+} /* Media closing */
+
+/*Browser specific*/
+@-moz-document url-prefix() { 
+  .parallax-container img {
+     height: unset !important;
+  }
+}

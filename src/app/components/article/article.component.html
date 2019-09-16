@@ -1,0 +1,113 @@
+<div  class="post animation-fade-in">
+    <div class="base-inner">
+        <div *ngIf="post.photo" class="post-image">
+            <div class="parallax-container">
+                <img src="{{post.photo}}" parallax />
+            </div>
+        </div>
+        <div class="post-bg-container white z-depth-1">
+            <header>
+                <div class="container center">
+                    <h2 class="heading">
+                        {{post.title}}
+                    </h2>
+                    <div class="subhead">
+                        <!--TODO coreect names and emails from the providers-->
+                        <userways *ngIf="init" class="author" [user]='post.user'></userways>
+                        <span *ngIf="date" class="datetime grey-text text-darken-1">
+							<div *ngIf="isPostOlderThanOneDay">
+								{{date | date:'MMM d, yyyy - h:mm a'}}
+							</div>
+							<div *ngIf="!isPostOlderThanOneDay">
+									{{date }} ago
+							</div>
+						</span>
+                    </div>
+                </div>
+            </header>
+            <article class="container content">
+                <div #container>
+                    <p></p>
+                </div>
+            </article>
+            <footer class="container">
+                <div class="section tags">
+                    <div class="chip" *ngFor="let tag of post.tags">
+                        #{{tag}}
+                    </div>
+                </div>
+                <div class="options section">
+                    <!--<h5 class="row center">Options</h5>-->
+                    <div class="row">
+                        <div class="left post-voting">
+                            <voting [votes]="post.votes" [upvote]="upvote" [downvote]="downvote" [unvote]="unvote" [myVote]="myVote"></voting>
+                        </div>
+                        <div class="option-button left col">
+                            <bookmark class="" [postId]="post._id"></bookmark>
+                        </div>
+                        <div class="option-button left col">
+                            <wavecontroller class="" [id]="id"></wavecontroller>
+                        </div>
+                        <div *ngIf='!delNeedsConfirm && isMyPost' class="option-button col right">
+                            <button class="btn btn-flat waves-effect waves-light grey lighten-1 white-text" (click)="showConfirm()">{{_languageService.language.articleComponent.delete}}</button>
+                        </div>
+                        <div *ngIf='!delNeedsConfirm && isMyPost'>
+                            <button class="option-button right btn btn-flat waves-effect waves-light light-blue lighten-1 white-text" (click)="edit()">{{_languageService.language.articleComponent.edit}}</button>
+                        </div>
+                        <div *ngIf='delNeedsConfirm && isMyPost' class="option-button col right" style="display: inline-table;">
+                            <confirm (confirmation)="delete($event)"></confirm>
+                        </div>
+                        <div *ngIf="!isMyPost" class="option-button right col">
+                            <report [id]="post._id" [type]="'post'"></report>
+                        </div>
+                        <share-buttons class="col" [url]="url"></share-buttons>
+                    </div>
+                </div>
+                <div class="author-box section center">
+                    <div>
+                        <h4 class="title-styled">{{_languageService.language.articleComponent.aboutAuthor}}</h4>
+                        <user *ngIf="init" [user]="post.user" [isUserMe]='isMyPost'></user>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <div class="parallax-container row white-text valign-wrapper comp-title comp-title-image related-heading" style="">
+            <div class="section">
+                <h3 class="center-align">{{_languageService.language.articleComponent.authRelated}}</h3>
+                <img src="img/bg/parallax-bg6.jpg" parallax />
+            </div>
+        </div>
+        <div class="author-related container" *ngIf="init">
+            <related *ngIf="init" [user]="post.user" [relatedFromId]="post._id"></related>
+        </div>
+        <div class="parallax-container row white-text valign-wrapper comp-title comp-title-image" style="">
+            <div class="section">
+                <h3 class="center-align">{{_languageService.language.articleComponent.comments}}</h3>
+                <img parallax src="img/bg/parallax-bg3.jpg" />
+            </div>
+        </div>
+        <div class="comments-area container" *ngIf="newComment||comments">
+            <div class="row">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">{{_languageService.language.articleComponent.leaveComment}}</span>
+                        <div class="input-field">
+                            <!--<i class="material-icons prefix">comment</i>-->
+                            <textarea [(ngModel)]="newComment" class="materialize-textarea" id="textinput" type="text" placeholder="Comment here"></textarea>
+                        </div>
+                        <button class="btn btn-default waves-effect waves-light light-blue lighten-1" (click)="addComment()"><i class="material-icons left">comment</i>{{_languageService.language.articleComponent.comment}}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card col s12">
+                    <div class="card-content">
+                        <span class="card-title">{{_languageService.language.articleComponent.comments}}</span>
+                        <comment (addCommentComment)="getComments()" *ngFor=" let comment of comments" [comment]="comment"></comment>
+                        <p *ngIf="comments"> {{_languageService.language.articleComponent.noComments}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

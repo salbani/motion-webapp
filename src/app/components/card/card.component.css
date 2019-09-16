@@ -1,0 +1,43 @@
+.card-image {
+    width: 100%;
+}
+.post-image {
+    height: 350px;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.post-author {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+}
+
+.post-datetime {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+}
+
+.tags {
+    margin-top: 20px;
+}
+
+.option-button {
+    margin-top: 20px;
+}
+
+
+/* Media */
+
+@media only screen and (max-width : 992px) {
+    .post-image {
+        /*height: 400px;*/
+        }
+} /* Media closing */
+
+@media only screen and (max-width : 600px) {
+    .post-image {
+        height: 250px;
+    }
+} /* Media closing */

@@ -1,0 +1,35 @@
+<div *ngIf='_languageService.language'>
+	<div class="userinfo">
+		<div class="user-info col s12 m4 l4 valign">
+			<div class="avatar">
+				<img class="user-info" *ngIf="imageUrl" [(src)]="imageUrl">
+			</div>
+		</div>
+		<div class="col s12 m4 l4 valign">
+			<userways [user]='user' [profile]='true'></userways>
+		</div>
+		<div *ngIf="_navbarService.currentComponent !== 'article'">
+			<div class="col s12 m4 l4 valign">
+				<div>
+					{{_languageService.language.userComponent.connections}} {{followers}}
+				</div>
+				<div>
+					{{_languageService.language.userComponent.connected}} {{following}}
+				</div>
+			</div>
+			<div class="col s12 m4 l4 valign">
+				<p class="user-info homepage">
+					{{_languageService.language.userComponent.homepage}}
+					<a target="_blank" href="{{weburl}}"> {{user.homepage}}</a>
+				</p>
+				<p>{{_languageService.language.userComponent.country}} {{user.homeCountry}}</p>
+			</div>
+		</div>
+		<report *ngIf="!isUserMe&&_navbarService.currentComponent == 'profile'" [id]="user._id" [type]="'user'"></report>
+		<div class="col s12 m4 l4 valign">
+			<div *ngIf="!isUserMe" class="user-info connect">
+				<button class="btn btn-default waves-effect waves-light light-blue lighten-1" (click)="connect() ">{{connection === 0 ?  _languageService.language.userComponent.connect: _languageService.language.userComponent.disconnect}}</button>
+			</div>
+		</div>
+	</div>
+</div>

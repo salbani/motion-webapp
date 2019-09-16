@@ -1,0 +1,13 @@
+<div *ngIf='_languageService.language' class="voting col">
+    <div class="center badge badge-inverse">
+        <span>{{ votes }} {{_languageService.language.votingComponent.points}}</span>
+    </div>
+    <div class="voting-buttons" style="display: inline-flex;">
+        <div style="cursor: pointer" class="center Button" [class.upvoted]="this.myVote == 0" (click)="upvoted()">
+            <a class="btn upvote white waves-effect z-depth-0"><i class="grey-text small material-icons">thumb_up</i></a>
+        </div>
+        <div style="cursor: pointer" class="center Button" (click)="downvoted()" [class.downvoted]="this.myVote == 2">
+            <a class="btn downvote white waves-effect z-depth-0"><i class="grey-text small material-icons">thumb_down</i></a>
+        </div>
+    </div>
+</div>

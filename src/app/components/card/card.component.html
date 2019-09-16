@@ -1,0 +1,47 @@
+<div class="feetpost row">
+    <div *ngIf='_languageService.language' class="card hoverable">
+        <div *ngIf="post.photo" (click)="goToPost()" class="card-image waves-effect waves-default">
+            <div class="post-image" [ngStyle]="{'background-image':'url('+post.photo+')'}"></div>
+            <!--<img src="{{post.photo}}">-->
+            <span class="card-title" style="cursor: pointer">{{post.title}}</span>
+        </div>
+        <div class="card-content">
+            <div class="row">
+                <div class="col">
+                    <div *ngIf="!post.photo" class="card-title" style="cursor: pointer" (click)="goToPost()">{{post.title}}</div>
+                    <div *ngIf="!isUserMe" class="chip post-author">
+                        <img class="user-info avatar" *ngIf="avatarURL" [src]="avatarURL">
+                        <userways class="chip" [user]='post.user'></userways>
+                    </div>
+                    <span *ngIf="date" class="datetime grey-text text-darken-1">
+							<div *ngIf="isPostOlderThanOneDay">
+								{{date | date:'MMM d, yyyy - h:mm a'}}
+							</div>
+							<div *ngIf="!isPostOlderThanOneDay">
+								{{date }} ago
+							</div>
+					</span>
+                    <span>{{ post.votes }} {{_languageService.language.votingComponent.points}}</span>
+                </div>
+            </div>
+            <div innerHTML="{{post.summary? post.summary :post.content |summaryPipe}}" maxlength="40" (click)="goToPost()" style="cursor: pointer"></div>
+            <div class="row" style="margin-bottom:0;">
+                <div class="tags col left">
+                    <div class="chip" *ngFor="let tag of post.tags">
+                        #{{tag}}
+                    </div>
+                </div>
+                <div class="option-button col right">
+                    <bookmark [postId]="post._id"></bookmark>
+                </div>
+            </div>
+        </div>
+        <div class="card-action">
+            <button *ngIf="isEditable" class="btn btn-flat waves-effect waves-light light-blue lighten-1 white-text" (click)="edit()">{{_languageService.language.cardComponent.edit}}</button>
+            <button *ngIf="isDeletable" class="btn btn-flat waves-effect waves-light grey lighten-1 white-text" (click)="showConfirm()">{{this.navbarService.currentComponent === 'waves'?'remove from Wave' :_languageService.language.cardComponent.delete}}</button>
+            <div *ngIf='delNeedsConfirm' style="display: inline-table;">
+                <confirm (confirmation)="delete($event)"></confirm>
+            </div>
+        </div>
+    </div>
+</div>

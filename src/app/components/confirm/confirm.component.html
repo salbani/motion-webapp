@@ -1,0 +1,5 @@
+<div *ngIf='_languageService.language'>
+    {{_languageService.language.confirmComponent.sure}}
+    <button (click)='yes()' class="btn btn-flat waves-effect waves-light light-blue lighten-1 white-text">{{_languageService.language.confirmComponent.yes}}</button>
+    <button (click)='no()' class="btn btn-flat waves-effect waves-light light-blue lighten-1 white-text">{{_languageService.language.confirmComponent.no}}</button>
+</div>

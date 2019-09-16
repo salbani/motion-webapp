@@ -1,0 +1,39 @@
+<div *ngIf="waves" class="base-inner">
+    <div class="">
+        <div *ngIf="!waveId" class="container">
+            <div *ngFor="let wave of waves">
+                <div class="row">
+                    <div class="col s12 m7 l7">
+                        <div class="card">
+                            <div class="waves-effect waves-default" (click)="goToWave(wave._id)">
+                                <div class="card-image">
+                                    <img [src]="wave.photo">
+                                    <span class="card-title">{{wave.name}}</span>
+                                </div>
+                                <div class="card-content">
+                                    <p>{{wave.items.length}} Posts</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div *ngIf="waveId && wave">
+            <div class="parallax-container">
+                <img [src]="wave.photo" parallax>
+            </div>
+            <div class="container">
+                <h3 style="display: inline-block;">{{wave.name}}</h3>
+                <div style="display: inline-block;">{{wave.items.length}} Posts</div>
+                <div *ngFor="let post of posts">
+                    <card [post]="post" [isDeletable]="isUserMe" (onDelete)="removeItem($event)"></card>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="noContent" class="container">
+            <p>This Wave has no content yet.</p>
+        </div>
+    </div>
+</div>

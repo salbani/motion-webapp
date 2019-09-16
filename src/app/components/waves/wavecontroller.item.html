@@ -1,0 +1,11 @@
+<div class="wavecontroller-outer">
+    <div (click)="addWave()" class="wave-item grey-text text-darken-2 waves-effect waves-light" materialize>
+        <div class="valign-wrapper" style="width:100%;">
+            <img *ngIf="wave.photo" [src]="wave.photo">
+            <div class="wave-name">{{wave.name}}</div>
+            <div class="wave-checked right" *ngIf="checked">
+                <i class="small material-icons checked-light">check_circle</i>
+            </div>
+        </div>
+    </div>
+</div>

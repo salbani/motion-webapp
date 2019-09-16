@@ -1,0 +1,14 @@
+<div *ngIf='user&&_languageService.language'>
+	<div *ngIf='!profile' (click)='goToUser()' style="cursor : pointer">
+		{{ user.name ? user.name : user.email}}
+	</div>
+	<div *ngIf='profile' (click)='goToUser()' style="cursor : pointer">
+		{{_languageService.language.userwaysComponent.name}} {{ user.name ? user.name : user.email}}
+		<div>
+			{{_languageService.language.userwaysComponent.email}} {{ user.email}}
+		</div>
+		<div>
+			{{user.bio? user.bio:null}}
+		</div>
+	</div>
+</div>

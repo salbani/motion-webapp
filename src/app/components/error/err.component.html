@@ -1,0 +1,20 @@
+<div class="base-outer valign-wrapper">
+	<div class="valign container section">
+			<div class="center grey-text text-darken-2">
+				<img class="loading-image" src="img/logo/loading-icon.png" />
+				<div *ngIf='message'>
+					{{message}}
+					<div class="section">
+						<button (click)="backToLogin" class="btn btn-flat white-text waves-effect waves-light light-blue">Login Again</button>
+					</div>
+				</div>
+				<div *ngIf='!message'>
+					<h1 class="title-styled">Error 404</h1>
+					<h5 class="row title-styled">This page may does not exist, or a followed link is broken.</h5>
+					<div class="section">
+						<button (click)="backToLogin" class="btn btn-flat white-text waves-effect waves-light light-blue">Login Again</button>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>

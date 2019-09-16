@@ -1,0 +1,20 @@
+<div id="controller" [materializeActions]="modalAction" class="modal modal-fixed-footer" materialize="closeModal" [materializeParams]="params">
+    <div materialize [materializeParams]="['Sucess',4000]" [materializeActions]="modalAction" class="modal-content">
+        <p>Add to:</p>
+        <div class="collection">
+            <div *ngFor="let wave of waves" class="collection-item">
+                <controllitem (addTo)="addItem($event,true)" (removeFrom)="removeItem($event,true)" [myWaves]="alreadyadded" [wave]="wave"></controllitem>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-light btn-flat">Close</a>
+        <div routerLinkActive="active">
+            <a class="left waves-effect waves-light btn btn-flat light-blue lighten-1 white-text" routerLink="/createwave"><i class="material-icons left">add</i>New Wave</a>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a materialize="leanModal" (click)="set()" [materializeParams]="[{dismissible: true}]" class="btn btn-flat waves-effect waves-light white-text light-blue lighten-1 modal-trigger" href="#controller"><i class="material-icons left">image</i>add to wave</a>
+</div>

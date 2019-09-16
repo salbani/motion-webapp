@@ -1,0 +1,33 @@
+<div *ngIf="_languageService.language" id="{{title}}" [materializeActions]="uploaderModalAction" class="fileuploader modal modal-fixed-footer"
+    materialize="closeModal" [materializeParams]="params">
+    <div class="modal-content">
+        <h4 class="title-styled">{{title}}</h4>
+        <p>{{_languageService.language.fileuploaderComponent.selectImageOrUploadNew}} {{_languageService.language.fileuploaderComponent.pleaseHighResolution}}
+            {{_languageService.language.fileuploaderComponent.minimumRequired}} xXx * YyY Px</p>
+        <div class="section">
+            <image-cropper *ngIf="uploadedImageURL" [Ratio]="croppingRatio" (OnUploadFinished)="getImages($event)" Width="100%" Height="80%" [Source]="uploadedImageURL"> </image-cropper>
+            <input type="file" (change)="onFileInput($event)" name="file">
+        </div>
+        <div class="collection">
+            <div *ngFor="let img of images; let index = index">
+                <a [class.active]="img.link == choosenImg" (click)="choseImg(img.link)" class="collection-item grey-text text-darken-2 waves-effect waves-light"
+                    materialize>
+                    <div class="valign-wrapper">
+                        <img [src]="img.link">
+                        <!--<span class="filename">{{img.name}}</span>-->
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-light btn-flat">Close</a>
+        <a (click)="getImages()" class="left btn-flat waves-effect waves-light light-blue white-text">Refresh</a>
+    </div>
+</div>
+
+
+<div>
+    <a materialize="leanModal" [materializeParams]="[{dismissible: true}]" class="btn btn-flat waves-effect waves-light white-text light-blue lighten-1 modal-trigger"
+        href="#{{title}}"><i class="material-icons left">image</i>{{title}}</a>
+</div>

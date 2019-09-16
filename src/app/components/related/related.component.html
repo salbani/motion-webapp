@@ -1,0 +1,8 @@
+<div>
+    <card *ngFor="let post of posts" [post]="post"></card>
+</div>
+<div *ngIf="noRelated" class="row card">
+    <div class="card-content">
+        <span>{{_languageService.language.relatedComponent.noRelated}}</span>
+    </div>
+</div>

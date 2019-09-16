@@ -1,0 +1,52 @@
+<div *ngIf='_languageService.language' class="base-inner">
+    <div infinite-scroll [infiniteScrollDistance]="2" (scrolled)="loadMore()">
+        <div *ngIf="backGroundImg" class="profile-head-image parallax-container grey-text hide-on-small-only">
+            <div class="profile-card-outer">
+                <div class="container">
+                    <div class="profile-card row white z-depth-3">
+                        <div class="col s12">
+                            <div class="section center">
+                                <user *ngIf="user" [user]="user" [isUserMe]='isUserMe'></user>
+                            </div>
+                        </div>
+                        <!--<a *ngIf='_userService.checkForToken()' materialize="leanModal" [materializeParams]="[{dismissible: false}]" class="btn btn-flat right grey-text waves-effect waves-light modal-trigger" href="#edituser"><i class="material-icons left">account_circle</i>{{_languageService.language.navbarComponent.edit}}</a>-->
+                    </div>
+                </div>
+            </div>
+            <img [src]="backGroundImg" parallax>
+        </div>
+        <div class="hide-on-med-and-up">
+            <div *ngIf="backGroundImg" class="profile-head-image parallax-container">
+                <img [src]="backGroundImg">
+            </div>
+            <div class="profile-card-outer grey-text">
+                <div class="profile-card white">
+                    <div class="container section center">
+                        <user *ngIf="user" [user]="user" [isUserMe]='isUserMe'></user>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <wavesprew *ngIf="user" [userId]="user._id"></wavesprew>
+        <div class="comp-title comp-title-bg z-depth-1">
+            <h3 class="title-styled">{{_languageService.language.profileComponent.posts}}</h3>
+        </div>
+        <div class="container section">
+            <div *ngIf='!noResurce'>
+                <card (onDelete)="deletePost($event)" *ngFor="let post of posts" [post]="post" [isEditable]='isUserMe' [isDeletable]='isUserMe'></card>
+            </div>
+            <div *ngIf='noResurce'>
+                <div class="row">
+                    <div class="col s12">
+                        <div class="card">
+                            <div class="card-content">
+                                <p>{{_languageService.language.profileComponent.noContent}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--TODO loader icon-->
+    </div>
+</div>

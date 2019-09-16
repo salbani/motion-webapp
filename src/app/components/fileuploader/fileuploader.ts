@@ -28,6 +28,7 @@ export class FileUploaderComponent implements OnInit, OnDestroy {
 
 
     async ngOnInit() {
+        console.log(this._languageService)
         await this.getImages();
         this.uploadedImageURL = this.choosenImg ? this.choosenImg : null;
     }

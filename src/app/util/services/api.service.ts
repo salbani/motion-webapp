@@ -74,7 +74,6 @@ export class HttpHeader {
 
     post(url: string, data: Object) {
         const headers = this.createAuthorizationHeader();
-        console.log(headers)
         return this.http.post(url, data, {
             headers: headers
         });

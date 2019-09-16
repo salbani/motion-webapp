@@ -180,6 +180,9 @@ declare namespace languageFile {
         "changePassword": string;
         "wrong": string;
     };
+    "relatedComponent": {
+        "noRelated": string;
+    };
 }
 
 }

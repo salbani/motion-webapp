@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, EventEmitter, ViewChild, ElementRef, Output, Input } from '@angular/core';
+import { Component, OnDestroy, OnInit, EventEmitter, ViewChild, ElementRef, Output, Input, SimpleChanges } from '@angular/core';
 import { LanguageService } from '../../util/services/language.service';
 import * as Quill from 'quill';
 
@@ -12,7 +12,6 @@ export class EditorComponent implements OnInit {
     constructor(private _languageService: LanguageService) { }
     @Output() contentOutput = new EventEmitter()
     @Input() content;
-    placeholderContent = "Write Something";
     quill: Quill.Quill;
 
 
@@ -43,14 +42,17 @@ export class EditorComponent implements OnInit {
             theme: 'snow'
         })
         this.quill.on('text-change', () => { this.ContentCheck(); })
-        if (this.content === '')
-            this.content = this.quill.insertText(0, this.placeholderContent)
-        else
-            this.content = JSON.parse(this.content)
-        this.quill.setContents(this.content);
 
 
     }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes.content && changes.content.currentValue) {
+            const newContent = JSON.parse(changes.content.currentValue);
+            this.quill.setContents(newContent);
+        }
+    }
+
     ContentCheck() {
         let data = {
             content: this.quill.getContents(),

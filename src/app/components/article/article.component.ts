@@ -45,10 +45,10 @@ export class ArticleComponent implements OnInit, OnDestroy {
                 toolbar: false
             },
             readOnly: true,
-            theme: 'snow'
+            theme: false
         };
 
-        this.quill = new Quill(this.QuillContainer.nativeElement, options)
+        this.quill = new Quill(this.QuillContainer.nativeElement, options as any)
 
         this._aktivatedRoute.params.subscribe(async params => {
             this.id = params['id'];

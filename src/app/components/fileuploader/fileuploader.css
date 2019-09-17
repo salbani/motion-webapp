@@ -1,3 +1,41 @@
+.image {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px dashed rgb(126, 126, 126);
+    padding: 10px;
+}
+
+#file {
+    display: none;
+}
+
+.upload-icon{
+    position: absolute;
+    top: 0;
+    height: 100%;
+    font-size: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    user-select: none;
+    text-shadow: 0px 0px 5px rgba(51,51,51,0.62);
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+
+.upload-icon > i {
+    font-size: 100px;
+}
+
+.section {
+    position: relative;
+    width: 70%;
+    margin: auto;
+}
 
 .button-spinner {
     width: 100%;
@@ -27,4 +65,38 @@
 .loading-icon-small {
     width: 48px;
     height: 48px;
+}
+
+.uploaded-images{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.uploaded-images 
+.image-container {
+    width: 33.3333%;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.uploaded-images 
+a {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    padding: 20px;
+    border: 1px solid rgb(136, 136, 136);
+}
+
+.uploaded-images 
+a.active {
+    background: rgb(180, 180, 180);
+}
+
+.uploaded-images 
+img {
+    width: 100%;
+    height: auto;
 }

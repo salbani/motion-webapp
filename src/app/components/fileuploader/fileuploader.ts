@@ -28,7 +28,6 @@ export class FileUploaderComponent implements OnInit, OnDestroy {
 
 
     async ngOnInit() {
-        console.log(this._languageService)
         await this.getImages();
         this.uploadedImageURL = this.choosenImg ? this.choosenImg : null;
     }
@@ -42,6 +41,29 @@ export class FileUploaderComponent implements OnInit, OnDestroy {
         this.images = data.data;
     }
 
+    async upload(image: string | ArrayBuffer) {
+        let imageUploadObj = {
+            foo:
+            {
+                output:
+                {
+                    name: this.getRandomNumber(),
+                    image: image,
+                    type: 'image/jpeg'
+                }
+            }
+        };
+        let uploadRes = await this._mediaService.mediaUpload(imageUploadObj);
+        const isSuccessfullyUploaded = uploadRes.type === 1000 ? true : false;
+        this.getImages();
+    }
+
+    getRandomNumber() {
+        let buf: Uint16Array = new Uint16Array(1);
+        let numb = window.crypto.getRandomValues(buf);
+        return numb[0];
+    }
+
     choseImg(link: string) {
         this.uploadedImageURL = link;
         this.choosenImg = link;
@@ -53,9 +75,13 @@ export class FileUploaderComponent implements OnInit, OnDestroy {
         let URL = window.URL || (window as any).webkitURL;
         if (files && files.length) {
             let file = files[0];
-            if (this.uploadedImageURL)
-                URL.revokeObjectURL(this.uploadedImageURL);
-            this.uploadedImageURL = this._sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
+            if (file) {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = (ev) => {
+                    this.upload(reader.result)
+                }
+            }
         } else {
             throw new Error('Please select an image');
         }

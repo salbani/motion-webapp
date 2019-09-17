@@ -2,7 +2,7 @@
     <div class="base-inner">
         <div *ngIf="post.photo" class="post-image">
             <div class="parallax-container">
-                <img src="{{post.photo}}" parallax />
+                <img [src]="post.photo" *ngIf="post.photo" parallax />
             </div>
         </div>
         <div class="post-bg-container white z-depth-1">

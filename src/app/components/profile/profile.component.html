@@ -2,6 +2,7 @@
     <!-- <div infinite-scroll [infiniteScrollDistance]="2" (scrolled)="loadMore()"> -->
     <div>
         <div *ngIf="backGroundImg" class="profile-head-image parallax-container grey-text hide-on-small-only">
+            <img [src]="backGroundImg" parallax>
             <div class="profile-card-outer">
                 <div class="container">
                     <div class="profile-card row white z-depth-3">
@@ -14,7 +15,6 @@
                     </div>
                 </div>
             </div>
-            <img [src]="backGroundImg" parallax>
         </div>
         <div class="hide-on-med-and-up">
             <div *ngIf="backGroundImg" class="profile-head-image parallax-container">
